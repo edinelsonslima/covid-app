@@ -1,4 +1,5 @@
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import { ApiContext } from '../../context/api.context';
 import { ModalContext } from '../../context/modal.context';
 import './index.css';
 
@@ -8,128 +9,272 @@ interface ModalProps {
 
 const Modal = (props: ModalProps) => {
     const { setIsModal } = useContext(ModalContext);
+    const { data } = useContext(ApiContext);
+
+    const [abbreviation, setAbbreviation] = useState('');
+    const [continent, setContinent] = useState('');
+    const [location, setLocation] = useState('');
+    const [population, setPopulation] = useState('');
+    const [population_density, setPopulation_density] = useState('');
+    const [people_vaccinated, setPeople_vaccinated] = useState('');
+    const [people_fully_vaccinated, setPeople_fully_vaccinated] = useState('');
+    const [total_boosters, setTotal_boosters] = useState('');
+    const [new_vaccinations, setNew_vaccinations] = useState('');
+    const [total_vaccinations, setTotal_vaccinations] = useState('');
+    const [total_tests, setTotal_tests] = useState('');
+    const [new_tests, setNew_tests] = useState('');
+    const [reproduction_rate, setReproduction_rate] = useState('');
+    const [icu_patients, setIcu_patients] = useState('');
+    const [total_deaths, setTotal_deaths] = useState('');
+    const [new_deaths, setNew_deaths] = useState('');
+    const [total_cases, setTotal_cases] = useState('');
+    const [new_cases, setNew_cases] = useState('');
+
+    useEffect(() => {
+        Object.entries(data).map((value) => {
+            const [initials, infos] = value;
+            if (initials === props.abbreviation) {
+                setAbbreviation(initials);
+                setLocation(infos.location || 'sem registro');
+                setContinent(infos.continent || 'sem registro');
+                setTotal_cases(
+                    infos.data.slice(-1)[0].total_cases
+                        ? infos.data
+                              .slice(-1)[0]
+                              .total_cases.toLocaleString('pt-br')
+                        : 'sem registro'
+                );
+                setTotal_deaths(
+                    infos.data.slice(-1)[0].total_deaths
+                        ? infos.data
+                              .slice(-1)[0]
+                              .total_deaths.toLocaleString('pt-br')
+                        : 'sem registro'
+                );
+                setTotal_vaccinations(
+                    infos.data.slice(-1)[0].total_vaccinations
+                        ? infos.data
+                              .slice(-1)[0]
+                              .total_vaccinations.toLocaleString('pt-br')
+                        : 'sem registro'
+                );
+                setPopulation(
+                    infos.data.slice(-1)[0].population
+                        ? infos.data
+                              .slice(-1)[0]
+                              .population.toLocaleString('pt-br')
+                        : 'sem registro'
+                );
+                setPopulation_density(
+                    infos.data.slice(-1)[0].population_density
+                        ? infos.data
+                              .slice(-1)[0]
+                              .population_density.toLocaleString('pt-br')
+                        : 'sem registro'
+                );
+                setPeople_vaccinated(
+                    infos.data.slice(-1)[0].people_vaccinated
+                        ? infos.data
+                              .slice(-1)[0]
+                              .people_vaccinated.toLocaleString('pt-br')
+                        : 'sem registro'
+                );
+                setPeople_fully_vaccinated(
+                    infos.data.slice(-1)[0].people_fully_vaccinated
+                        ? infos.data
+                              .slice(-1)[0]
+                              .people_fully_vaccinated.toLocaleString('pt-br')
+                        : 'sem registro'
+                );
+                setTotal_boosters(
+                    infos.data.slice(-1)[0].total_boosters
+                        ? infos.data
+                              .slice(-1)[0]
+                              .total_boosters.toLocaleString('pt-br')
+                        : 'sem registro'
+                );
+                setNew_vaccinations(
+                    infos.data.slice(-1)[0].new_vaccinations
+                        ? infos.data
+                              .slice(-1)[0]
+                              .new_vaccinations.toLocaleString('pt-br')
+                        : 'sem registro'
+                );
+                setTotal_tests(
+                    infos.data.slice(-1)[0].total_tests
+                        ? infos.data
+                              .slice(-1)[0]
+                              .total_tests.toLocaleString('pt-br')
+                        : 'sem registro'
+                );
+                setNew_tests(
+                    infos.data.slice(-1)[0].new_tests
+                        ? infos.data
+                              .slice(-1)[0]
+                              .new_tests.toLocaleString('pt-br')
+                        : 'sem registro'
+                );
+                setReproduction_rate(
+                    infos.data.slice(-1)[0].reproduction_rate
+                        ? infos.data
+                              .slice(-1)[0]
+                              .reproduction_rate.toLocaleString('pt-br')
+                        : 'sem registro'
+                );
+                setIcu_patients(
+                    infos.data.slice(-1)[0].icu_patients
+                        ? infos.data
+                              .slice(-1)[0]
+                              .icu_patients.toLocaleString('pt-br')
+                        : 'sem registro'
+                );
+                setNew_deaths(
+                    infos.data.slice(-1)[0].new_deaths
+                        ? infos.data
+                              .slice(-1)[0]
+                              .new_deaths.toLocaleString('pt-br')
+                        : 'sem registro'
+                );
+                setNew_cases(
+                    infos.data.slice(-1)[0].new_cases
+                        ? infos.data
+                              .slice(-1)[0]
+                              .new_cases.toLocaleString('pt-br')
+                        : 'sem registro'
+                );
+            }
+
+            return initials;
+        });
+    });
 
     return (
         <section className='section-modal'>
-            <h1>{props.abbreviation}</h1>
-            <p>edinelson</p>
+            <div className='modal-container'>
+                <div className='modal-container-left'>
+                    <div className='modal-content-group modal-location'>
+                        <div className='modal-content-infos'>
+                            <label htmlFor='location'>Localização</label>
+                            <p id='location'> {location} </p>
+                        </div>
+                        <div className='modal-content-infos'>
+                            <label htmlFor='continent'>Continente</label>
+                            <p id='continent'> {continent} </p>
+                        </div>
+                        <div className='modal-content-infos'>
+                            <label htmlFor='abbreviation'>Sigla</label>{' '}
+                            <p id='abbreviation'> {abbreviation} </p>
+                        </div>
+                    </div>
+                    <div className='modal-content-group modal-population'>
+                        <div className='modal-content-infos'>
+                            <label htmlFor='population'>População</label>
+                            <p id='population'> {population} </p>
+                        </div>
+                        <div className='modal-content-infos'>
+                            <label htmlFor='population_density'>
+                                Densidade Populacional
+                            </label>
+                            <p id='population_density'>
+                                {' '}
+                                {population_density}{' '}
+                            </p>
+                        </div>
+                    </div>
+                    <div className='modal-content-group modal-vaccination'>
+                        <div className='modal-content-infos'>
+                            <label htmlFor='total_vaccinations'>
+                                Total de vacinados
+                            </label>
+                            <p id='total_vaccinations'>
+                                {' '}
+                                {total_vaccinations}{' '}
+                            </p>
+                        </div>
+                        <div className='modal-content-infos'>
+                            <label htmlFor='new_vaccinations'>
+                                Novos vacinados
+                            </label>
+                            <p id='new_vaccinations'> {new_vaccinations} </p>
+                        </div>
+                        <div className='modal-content-infos'>
+                            <label htmlFor='people_vaccinated'>
+                                Primeira dose
+                            </label>
+                            <p id='people_vaccinated'> {people_vaccinated} </p>
+                        </div>
+                        <div className='modal-content-infos'>
+                            <label htmlFor='people_fully_vaccinated'>
+                                Segunda dose ou dose única
+                            </label>
+                            <p id='people_fully_vaccinated'>
+                                {' '}
+                                {people_fully_vaccinated}{' '}
+                            </p>
+                        </div>
+                        <div className='modal-content-infos'>
+                            <label htmlFor='total_boosters'>
+                                Dose de reforço
+                            </label>
+                            <p id='total_boosters'> {total_boosters} </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div className='modal-container-right'>
+                    <div className='modal-content-group modal-tests'>
+                        <div className='modal-content-infos'>
+                            <label htmlFor='total_tests'>Total de testes</label>
+                            <p id='total_tests'> {total_tests} </p>
+                        </div>
+                        <div className='modal-content-infos'>
+                            <label htmlFor='new_tests'>Novos testes</label>
+                            <p id='new_tests'> {new_tests} </p>
+                        </div>
+                    </div>
+
+                    <div className='modal-unity  modal-content-group modal-content-infos'>
+                        <label htmlFor='reproduction_rate'>
+                            Taxa de reprodução
+                        </label>
+                        <p id='reproduction_rate'> {reproduction_rate} </p>
+                    </div>
+
+                    <div className='modal-unity modal-content-group modal-content-infos '>
+                        <label htmlFor='icu_patients'>Pacientes em UTI</label>
+                        <p id='icu_patients'> {icu_patients} </p>
+                    </div>
+
+                    <div className='modal-content-group modal-deaths'>
+                        <div className='modal-content-infos'>
+                            <label htmlFor='total_deaths'>
+                                Total de mortos
+                            </label>
+                            <p id='total_deaths'> {total_deaths} </p>
+                        </div>
+                        <div className='modal-content-infos'>
+                            <label htmlFor='new_deaths'>Novos mortos</label>
+                            <p id='new_deaths'> {new_deaths} </p>
+                        </div>
+                    </div>
+                    <div className='modal-content-group modal-cases'>
+                        <div className='modal-content-infos'>
+                            <label htmlFor='total_cases'>Total de casos</label>
+                            <p id='total_cases'> {total_cases} </p>
+                        </div>
+                        <div className='modal-content-infos'>
+                            <label htmlFor='new_cases'>Novos casos</label>
+                            <p id='new_cases'> {new_cases} </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button className='modal-button' onClick={() => setIsModal(false)}>
+                VOLTAR
+            </button>
         </section>
     );
 };
 
 export { Modal };
-
-          {
-              /* <h1>abbreviation={props.abbreviation}</h1>
-            <h1> continent={props.continent}</h1>
-            <h1> location={props.location}</h1>
-            <h1> population={props.population}</h1>
-            <h1> population_density={props.population_density}</h1>
-            <h1> people_vaccinated={props.people_vaccinated}</h1>
-            <h1> people_fully_vaccinated={props.people_fully_vaccinated}</h1>
-            <h1> total_boosters={props.total_boosters}</h1>
-            <h1> new_vaccinations={props.new_vaccinations}</h1>
-            <h1> total_vaccinations={props.total_vaccinations}</h1>
-            <h1> total_tests={props.total_tests}</h1>
-            <h1> new_tests={props.new_tests}</h1>
-            <h1> reproduction_rate={props.reproduction_rate}</h1>
-            <h1> icu_patients={props.icu_patients}</h1>
-            <h1> total_deaths={props.total_deaths}</h1>
-            <h1> new_deaths={props.new_deaths}</h1>
-            <h1> total_cases={props.total_cases}</h1>
-            <h1> new_cases={props.new_cases}</h1> */
-          }
-
- // const abbreviation = initials;
-
-                // const location = infos.location || 'sem registro';
-
-                // const continent = infos.continent || 'sem registro';
-
-                // const total_cases = infos.data.slice(-1)[0].total_cases
-                //     ? infos.data
-                //           .slice(-1)[0]
-                //           .total_cases.toLocaleString('pt-br')
-                //     : 'sem registro';
-
-                // const total_deaths = infos.data.slice(-1)[0].total_deaths
-                //     ? infos.data
-                //           .slice(-1)[0]
-                //           .total_deaths.toLocaleString('pt-br')
-                //     : 'sem registro';
-
-                // const total_vaccinations = infos.data.slice(-1)[0]
-                //     .total_vaccinations
-                //     ? infos.data
-                //           .slice(-1)[0]
-                //           .total_vaccinations.toLocaleString('pt-br')
-                //     : 'sem registro';
-
-                // const population = infos.data.slice(-1)[0].population
-                //     ? infos.data.slice(-1)[0].population.toLocaleString('pt-br')
-                //     : 'sem registro';
-
-                // const population_density = infos.data.slice(-1)[0]
-                //     .population_density
-                //     ? infos.data
-                //           .slice(-1)[0]
-                //           .population_density.toLocaleString('pt-br')
-                //     : 'sem registro';
-
-                // const people_vaccinated = infos.data.slice(-1)[0]
-                //     .people_vaccinated
-                //     ? infos.data
-                //           .slice(-1)[0]
-                //           .people_vaccinated.toLocaleString('pt-br')
-                //     : 'sem registro';
-
-                // const people_fully_vaccinated = infos.data.slice(-1)[0]
-                //     .people_fully_vaccinated
-                //     ? infos.data
-                //           .slice(-1)[0]
-                //           .people_fully_vaccinated.toLocaleString('pt-br')
-                //     : 'sem registro';
-
-                // const total_boosters = infos.data.slice(-1)[0].total_boosters
-                //     ? infos.data
-                //           .slice(-1)[0]
-                //           .total_boosters.toLocaleString('pt-br')
-                //     : 'sem registro';
-
-                // const new_vaccinations = infos.data.slice(-1)[0]
-                //     .new_vaccinations
-                //     ? infos.data
-                //           .slice(-1)[0]
-                //           .new_vaccinations.toLocaleString('pt-br')
-                //     : 'sem registro';
-
-                // const total_tests = infos.data.slice(-1)[0].total_tests
-                //     ? infos.data
-                //           .slice(-1)[0]
-                //           .total_tests.toLocaleString('pt-br')
-                //     : 'sem registro';
-
-                // const new_tests = infos.data.slice(-1)[0].new_tests
-                //     ? infos.data.slice(-1)[0].new_tests.toLocaleString('pt-br')
-                //     : 'sem registro';
-
-                // const reproduction_rate = infos.data.slice(-1)[0]
-                //     .reproduction_rate
-                //     ? infos.data
-                //           .slice(-1)[0]
-                //           .reproduction_rate.toLocaleString('pt-br')
-                //     : 'sem registro';
-
-                // const icu_patients = infos.data.slice(-1)[0].icu_patients
-                //     ? infos.data
-                //           .slice(-1)[0]
-                //           .icu_patients.toLocaleString('pt-br')
-                //     : 'sem registro';
-
-                // const new_deaths = infos.data.slice(-1)[0].new_deaths
-                //     ? infos.data.slice(-1)[0].new_deaths.toLocaleString('pt-br')
-                //     : 'sem registro';
-
-                // const new_cases = infos.data.slice(-1)[0].new_cases
-                //     ? infos.data.slice(-1)[0].new_cases.toLocaleString('pt-br')
-                //     : 'sem registro';

@@ -3,7 +3,7 @@ import { ApiContext } from '../../context/api.context';
 import './index.css';
 
 const Search = () => {
-    const { loading } = useContext(ApiContext);
+    const { loading } = useContext(ApiContext);;
     const [search, setSearch] = useState('');
 
     if (!loading) {
@@ -11,13 +11,13 @@ const Search = () => {
         if (cards.length > 0) {
             Object.values(cards).map((card) => {
                 const title = card.querySelector('.card-title')?.textContent;
-                const initials = card.querySelector('.abbreviation')?.textContent;
+                const initials =
+                    card.querySelector('.abbreviation')?.textContent;
                 let express = new RegExp(search, 'i');
                 if (title && initials) {
                     if (express.test(title) || express.test(initials)) {
                         card.classList.remove('none');
                     } else {
-                        console.log(initials);
                         card.classList.add('none');
                     }
                 }

@@ -1,6 +1,5 @@
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import { ModalContext } from '../../context/modal.context';
-import { Modal } from '../modal';
 import './index.css';
 
 interface CardProps {
@@ -12,21 +11,15 @@ interface CardProps {
 }
 
 const Card = (props: CardProps) => {
-    const { isModal, setIsModal } = useContext(ModalContext);
-    const [showModal, setShowModal] = useState({});
-
-    function handleModal(abbr: string) {
-        const arrayAux = [<Modal abbreviation={abbr}/>]
-        setShowModal(arrayAux);
-    }
+    const { setIsModal, setIsAbbr } = useContext(ModalContext);
 
     return (
         <>
-            {isModal ? Object.values(showModal).map(show => show) : ''}
+           
             <div
                 className='card-body'
                 onClick={() => {
-                    handleModal(props.abbreviation);
+                    setIsAbbr(props.abbreviation)
                     setIsModal(true);
                 }}
             >

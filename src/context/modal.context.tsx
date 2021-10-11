@@ -1,4 +1,10 @@
-import { createContext, useMemo, useState } from 'react';
+import {
+    createContext,
+    Dispatch,
+    SetStateAction,
+    useMemo,
+    useState,
+} from 'react';
 
 interface ModalProviderProps {
     children: JSX.Element[] | JSX.Element;
@@ -6,17 +12,20 @@ interface ModalProviderProps {
 
 interface ModalContextProps {
     isModal: boolean;
-    setIsModal: React.Dispatch<React.SetStateAction<boolean>>;
+    setIsModal: Dispatch<SetStateAction<boolean>>;
+    isAbbr: string;
+    setIsAbbr: Dispatch<SetStateAction<string>>;
 }
 
 const ModalContext = createContext({} as ModalContextProps);
 
 const ModalProvider = (props: ModalProviderProps) => {
     const [isModal, setIsModal] = useState(false);
-    
+    const [isAbbr, setIsAbbr] = useState('');
+
     const value = useMemo(
-        () => ({ isModal, setIsModal }),
-        [isModal, setIsModal]
+        () => ({ isModal, setIsModal, isAbbr, setIsAbbr }),
+        [isModal, setIsModal, isAbbr, setIsAbbr]
     );
 
     return (

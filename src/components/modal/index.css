@@ -1,0 +1,79 @@
+.section-modal {
+    width: 97%;
+    min-height: calc(100vh - 6em);
+    background-color: #e7e7e7;
+    padding: 20px;
+    box-shadow: 0 0 15px #0000002a;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 40px;
+    transition: all .5s ease-in-out;
+    margin: auto;
+}
+
+.modal-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap: 20px;
+}
+
+.modal-container-left, .modal-container-right {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap: 20px;
+    min-width: 280px;
+    flex: 1;
+}
+
+.modal-content-group {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px #0000003e;
+    gap: 5px;
+    width: 100%;
+}
+
+.modal-content-infos {
+    display: flex;
+    gap: 10px;
+}
+
+.modal-content-infos>label {
+    color: var(--blue-dark);
+    font-weight: 600;
+    flex: 2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.modal-content-infos>p {
+    color: var(--black);
+    flex: 1;
+}
+
+.modal-unity {
+    display: flex;
+    flex-direction: row;
+}
+
+.modal-button {
+    max-width: 100px;
+    outline: none;
+    border: none;
+    padding: 10px;
+    color: var(--yellow);
+    border-radius: 50px 10px 10px 50px;
+    font-weight: bold;
+    background: var(--blue-dark);
+    cursor: pointer;
+}
+
+.modal-button:hover {
+    background: var(--blue);
+}
