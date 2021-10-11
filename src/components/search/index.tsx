@@ -1,5 +1,5 @@
 import { useContext, useState } from 'react';
-import { ApiContext } from '../../context/api';
+import { ApiContext } from '../../context/api.context';
 import './index.css';
 
 const Search = () => {
@@ -10,13 +10,14 @@ const Search = () => {
         const cards = document.querySelectorAll('.card-body');
         if (cards.length > 0) {
             Object.values(cards).map((card) => {
-                const title = card.querySelector('.card-title');
-                let card_title = title?.textContent;
+                const title = card.querySelector('.card-title')?.textContent;
+                const initials = card.querySelector('.abbreviation')?.textContent;
                 let express = new RegExp(search, 'i');
-                if (card_title) {
-                    if (express.test(card_title)) {
+                if (title && initials) {
+                    if (express.test(title) || express.test(initials)) {
                         card.classList.remove('none');
                     } else {
+                        console.log(initials);
                         card.classList.add('none');
                     }
                 }

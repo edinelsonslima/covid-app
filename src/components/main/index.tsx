@@ -2,7 +2,7 @@ import { Card } from '../card';
 import './index.css';
 import { useContext, useEffect, useState } from 'react';
 import { Loading } from '../loading/index';
-import { ApiContext } from '../../context/api';
+import { ApiContext } from '../../context/api.context';
 
 const Main = () => {
     const { loading, data } = useContext(ApiContext);
@@ -15,7 +15,11 @@ const Main = () => {
     function handlerCards(covid: any) {
         const ArrayAux: JSX.Element[] = [];
         Object.entries(covid).map((value: [string, any], index: number) => {
-            const [, infos] = value;
+            const [initials, infos] = value;
+
+            const abbreviation = initials;
+
+            const location = infos.location || 'sem registro';
 
             const total_cases = infos.data.slice(-1)[0].total_cases
                 ? infos.data.slice(-1)[0].total_cases.toLocaleString('pt-br')
@@ -34,7 +38,8 @@ const Main = () => {
 
             ArrayAux.push(
                 <Card
-                    name={infos.location}
+                    abbreviation={abbreviation}
+                    location={location}
                     total_cases={total_cases}
                     total_deaths={total_deaths}
                     total_vaccinations={total_vaccinations}

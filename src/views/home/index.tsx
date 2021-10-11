@@ -2,15 +2,18 @@ import { Footer } from '../../components/footer';
 import { Header } from '../../components/header';
 import { Main } from '../../components/main';
 import { Search } from '../../components/search';
-import { ApiProvider } from '../../context/api';
+import { ApiProvider } from '../../context/api.context';
+import { ModalProvider } from '../../context/modal.context';
 
 const Home = () => {
     return (
         <ApiProvider>
-            <Header />
-            <Search />
-            <Main />
-            <Footer/>
+            <ModalProvider>
+                <Header />
+                <Search />
+                <Main />
+                <Footer />
+            </ModalProvider>
         </ApiProvider>
     );
 };
