@@ -54,6 +54,7 @@
 
 .modal-content-infos>p {
     color: var(--black);
+    font-weight: 700;
     flex: 1;
 }
 

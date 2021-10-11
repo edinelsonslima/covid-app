@@ -155,29 +155,72 @@ const Modal = (props: ModalProps) => {
                     <div className='modal-content-group modal-location'>
                         <div className='modal-content-infos'>
                             <label htmlFor='location'>Localização</label>
-                            <p id='location'> {location} </p>
+                            <p
+                                id='location'
+                                style={
+                                    location === 'sem registro'
+                                        ? { color: '#a0a0a0' }
+                                        : {}
+                                }
+                            >
+                                {location}
+                            </p>
                         </div>
                         <div className='modal-content-infos'>
                             <label htmlFor='continent'>Continente</label>
-                            <p id='continent'> {continent} </p>
+                            <p
+                                id='continent'
+                                style={
+                                    continent === 'sem registro'
+                                        ? { color: '#a0a0a0' }
+                                        : {}
+                                }
+                            >
+                                {continent}
+                            </p>
                         </div>
                         <div className='modal-content-infos'>
-                            <label htmlFor='abbreviation'>Sigla</label>{' '}
-                            <p id='abbreviation'> {abbreviation} </p>
+                            <label htmlFor='abbreviation'>Sigla</label>
+                            <p
+                                id='abbreviation'
+                                style={
+                                    abbreviation === 'sem registro'
+                                        ? { color: '#a0a0a0' }
+                                        : {}
+                                }
+                            >
+                                {abbreviation}
+                            </p>
                         </div>
                     </div>
+
                     <div className='modal-content-group modal-population'>
                         <div className='modal-content-infos'>
                             <label htmlFor='population'>População</label>
-                            <p id='population'> {population} </p>
+                            <p
+                                style={
+                                    population === 'sem registro'
+                                        ? { color: '#a0a0a0' }
+                                        : {}
+                                }
+                                id='population'
+                            >
+                                {population}
+                            </p>
                         </div>
                         <div className='modal-content-infos'>
                             <label htmlFor='population_density'>
                                 Densidade Populacional
                             </label>
-                            <p id='population_density'>
-                                {' '}
-                                {population_density}{' '}
+                            <p
+                                style={
+                                    population_density === 'sem registro '
+                                        ? {}
+                                        : { color: '#a0a0a0' }
+                                }
+                                id='population_density'
+                            >
+                                {population_density}
                             </p>
                         </div>
                     </div>
@@ -186,37 +229,76 @@ const Modal = (props: ModalProps) => {
                             <label htmlFor='total_vaccinations'>
                                 Total de vacinados
                             </label>
-                            <p id='total_vaccinations'>
-                                {' '}
-                                {total_vaccinations}{' '}
+                            <p
+                                style={
+                                    total_vaccinations === 'sem registro'
+                                        ? { color: '#a0a0a0' }
+                                        : {}
+                                }
+                                id='total_vaccinations'
+                            >
+                                {total_vaccinations}
                             </p>
                         </div>
                         <div className='modal-content-infos'>
                             <label htmlFor='new_vaccinations'>
                                 Novos vacinados
                             </label>
-                            <p id='new_vaccinations'> {new_vaccinations} </p>
+                            <p
+                                style={
+                                    new_vaccinations === 'sem registro'
+                                        ? { color: '#a0a0a0' }
+                                        : {}
+                                }
+                                id='new_vaccinations'
+                            >
+                                {new_vaccinations}
+                            </p>
                         </div>
                         <div className='modal-content-infos'>
                             <label htmlFor='people_vaccinated'>
                                 Primeira dose
                             </label>
-                            <p id='people_vaccinated'> {people_vaccinated} </p>
+                            <p
+                                style={
+                                    people_vaccinated === 'sem registro'
+                                        ? { color: '#a0a0a0' }
+                                        : {}
+                                }
+                                id='people_vaccinated'
+                            >
+                                {people_vaccinated}
+                            </p>
                         </div>
                         <div className='modal-content-infos'>
                             <label htmlFor='people_fully_vaccinated'>
                                 Segunda dose ou dose única
                             </label>
-                            <p id='people_fully_vaccinated'>
-                                {' '}
-                                {people_fully_vaccinated}{' '}
+                            <p
+                                style={
+                                    people_fully_vaccinated === 'sem registro'
+                                        ? { color: '#a0a0a0' }
+                                        : {}
+                                }
+                                id='people_fully_vaccinated'
+                            >
+                                {people_fully_vaccinated}
                             </p>
                         </div>
                         <div className='modal-content-infos'>
                             <label htmlFor='total_boosters'>
                                 Dose de reforço
                             </label>
-                            <p id='total_boosters'> {total_boosters} </p>
+                            <p
+                                style={
+                                    total_boosters === 'sem registro'
+                                        ? { color: '#a0a0a0' }
+                                        : {}
+                                }
+                                id='total_boosters'
+                            >
+                                {total_boosters}
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -225,11 +307,29 @@ const Modal = (props: ModalProps) => {
                     <div className='modal-content-group modal-tests'>
                         <div className='modal-content-infos'>
                             <label htmlFor='total_tests'>Total de testes</label>
-                            <p id='total_tests'> {total_tests} </p>
+                            <p
+                                style={
+                                    total_tests === 'sem registro'
+                                        ? { color: '#a0a0a0' }
+                                        : {}
+                                }
+                                id='total_tests'
+                            >
+                                {total_tests}
+                            </p>
                         </div>
                         <div className='modal-content-infos'>
                             <label htmlFor='new_tests'>Novos testes</label>
-                            <p id='new_tests'> {new_tests} </p>
+                            <p
+                                style={
+                                    new_tests === 'sem registro'
+                                        ? { color: '#a0a0a0' }
+                                        : {}
+                                }
+                                id='new_tests'
+                            >
+                                {new_tests}
+                            </p>
                         </div>
                     </div>
 
@@ -237,12 +337,30 @@ const Modal = (props: ModalProps) => {
                         <label htmlFor='reproduction_rate'>
                             Taxa de reprodução
                         </label>
-                        <p id='reproduction_rate'> {reproduction_rate} </p>
+                        <p
+                            style={
+                                reproduction_rate === 'sem registro'
+                                    ? { color: '#a0a0a0' }
+                                    : {}
+                            }
+                            id='reproduction_rate'
+                        >
+                            {reproduction_rate}
+                        </p>
                     </div>
 
                     <div className='modal-unity modal-content-group modal-content-infos '>
                         <label htmlFor='icu_patients'>Pacientes em UTI</label>
-                        <p id='icu_patients'> {icu_patients} </p>
+                        <p
+                            style={
+                                icu_patients === 'sem registro'
+                                    ? { color: '#a0a0a0' }
+                                    : {}
+                            }
+                            id='icu_patients'
+                        >
+                            {icu_patients}
+                        </p>
                     </div>
 
                     <div className='modal-content-group modal-deaths'>
@@ -250,21 +368,57 @@ const Modal = (props: ModalProps) => {
                             <label htmlFor='total_deaths'>
                                 Total de mortos
                             </label>
-                            <p id='total_deaths'> {total_deaths} </p>
+                            <p
+                                style={
+                                    total_deaths === 'sem registro'
+                                        ? { color: '#a0a0a0' }
+                                        : {}
+                                }
+                                id='total_deaths'
+                            >
+                                {total_deaths}
+                            </p>
                         </div>
                         <div className='modal-content-infos'>
                             <label htmlFor='new_deaths'>Novos mortos</label>
-                            <p id='new_deaths'> {new_deaths} </p>
+                            <p
+                                style={
+                                    new_deaths === 'sem registro'
+                                        ? { color: '#a0a0a0' }
+                                        : {}
+                                }
+                                id='new_deaths'
+                            >
+                                {new_deaths}
+                            </p>
                         </div>
                     </div>
                     <div className='modal-content-group modal-cases'>
                         <div className='modal-content-infos'>
                             <label htmlFor='total_cases'>Total de casos</label>
-                            <p id='total_cases'> {total_cases} </p>
+                            <p
+                                style={
+                                    total_cases === 'sem registro'
+                                        ? { color: '#a0a0a0' }
+                                        : {}
+                                }
+                                id='total_cases'
+                            >
+                                {total_cases}
+                            </p>
                         </div>
                         <div className='modal-content-infos'>
                             <label htmlFor='new_cases'>Novos casos</label>
-                            <p id='new_cases'> {new_cases} </p>
+                            <p
+                                style={
+                                    new_cases === 'sem registro'
+                                        ? { color: '#a0a0a0' }
+                                        : {}
+                                }
+                                id='new_cases'
+                            >
+                                {new_cases}
+                            </p>
                         </div>
                     </div>
                 </div>
