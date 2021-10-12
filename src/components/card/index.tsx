@@ -30,6 +30,7 @@ const Card = (props: CardProps) => {
                     <p className='card-infos'>
                         Vacinados: {props.total_vaccinations}
                     </p>
+                    <small className="card-small" >Clique para obter mais informações</small>
                     <span className='abbreviation'>{props.abbreviation}</span>
                 </div>
             </div>
