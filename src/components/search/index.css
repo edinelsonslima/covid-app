@@ -1,16 +1,22 @@
 .search-country {
     outline: none;
     border: 1px solid var(--yellow);
-    padding: 7px 15px 7px 7px;
+    padding: 7px 15px 7px 70px;
     box-shadow: 0 0 8px #00000044;
     width: 100%;
     position: sticky;
-    top: 3.5em;
+    top: 3em;
     z-index: 3;
+    font-size: 1em;
+    font-weight: 700;
 }
 
 .search-country:focus {
     border: 1px solid var(--yellow-dark);
+}
+
+.search-country::placeholder{
+
 }
 
 .none {
