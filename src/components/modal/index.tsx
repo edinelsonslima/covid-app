@@ -150,6 +150,9 @@ const Modal = (props: ModalProps) => {
 
     return (
         <section className='section-modal'>
+            <button className='modal-button' onClick={() => setIsModal(false)}>
+                VOLTAR
+            </button>
             <div className='modal-container'>
                 <div className='modal-container-left'>
                     <div className='modal-content-group modal-location'>
@@ -423,10 +426,6 @@ const Modal = (props: ModalProps) => {
                     </div>
                 </div>
             </div>
-
-            <button className='modal-button' onClick={() => setIsModal(false)}>
-                VOLTAR
-            </button>
         </section>
     );
 };
