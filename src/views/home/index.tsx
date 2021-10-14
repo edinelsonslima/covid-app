@@ -5,9 +5,9 @@ import { Main } from '../../components/main';
 import { Modal } from '../../components/modal';
 import { Search } from '../../components/search';
 import { ModalContext } from '../../context/modal.context';
-
+import './index.css'
 const Home = () => {
-    const {isAbbr ,isModal } = useContext(ModalContext);
+    const { isAbbr, isModal } = useContext(ModalContext);
     return (
         <>
             {isModal ? (
@@ -17,12 +17,14 @@ const Home = () => {
                     <Footer />
                 </>
             ) : (
-                <>
-                    <Header />
-                    <Search />
+                <section className="home">
+                    <div>
+                        <Header />
+                        <Search />
+                    </div>
                     <Main />
                     <Footer />
-                </>
+                </section>
             )}
         </>
     );
