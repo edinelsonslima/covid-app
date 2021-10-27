@@ -1,3 +1,18 @@
+<div align="center">
+  
+  # COVID APP
+  
+  <img src="https://cdn.discordapp.com/attachments/757077752099897364/897298045409067048/covid-app.jpeg" />
+  
+</div>
+
+#
+
+Projeto busca em uma api oficial da OIWD dados realacionas ao covid nos países, mostrando de forma mais simples os dados mais relevantes como numero de vacinados, novos casos e mortes de cada país
+
+#
+<br>
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
