@@ -8,7 +8,7 @@
 
 #
 
-- Projeto busca em uma api oficial da OIWD dados realacionas ao covid nos países, mostrando de forma mais simples os dados mais relevantes como numero de vacinados, novos casos e mortes de cada país
+- Projeto busca em uma api oficial da OWID dados realacionas ao covid nos países, mostrando de forma mais simples os dados mais relevantes como numero de vacinados, novos casos e mortes de cada país
 
 #
 <br>
